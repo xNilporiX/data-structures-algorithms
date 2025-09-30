@@ -8,7 +8,6 @@
  * @returns
  */
 function selectionSort(arr, callBackFn) {
-  let shouldSwap = false;
   for (let i = 0; i < arr.length; i++) {
     let minIndex = i;
     for (let j = i + 1; j < arr.length; j++) {
@@ -27,9 +26,6 @@ function selectionSort(arr, callBackFn) {
       let temp = arr[i];
       arr[i] = arr[minIndex];
       arr[minIndex] = temp;
-    }
-
-    if (shouldSwap) {
     }
   }
   return arr;
