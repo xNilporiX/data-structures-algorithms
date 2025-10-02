@@ -31,7 +31,7 @@ function selectionSort(arr, callBackFn) {
   return arr;
 }
 
-console.log(selectionSort([5, 4, 3, 2, 1]));
+// console.log(selectionSort([5, 4, 3, 2, 1]));
 console.log(selectionSort([25, 100, 33, 22, 121]));
 console.log(selectionSort([4, 20, 12, 10, 7, 9])); // [4, 7, 9, 10, 12, 20]
 console.log(selectionSort([0, -10, 7, 4])); // [-10, 0, 4, 7]
