@@ -26,7 +26,7 @@ function radixSort(arr) {
     for (var j = 0; j < arr.length; j++) {
       // Get the digit of the index i.
       let digit = getDigit(arr[j], i);
-      buckets[isNaN(digit) ? 0 : digit].push(arr[j]);
+      buckets[digit].push(arr[j]);
     }
 
     // After end of each inner loop, concatenate the the buckets into the array to remember the order.
@@ -45,6 +45,7 @@ function radixSort(arr) {
  */
 function getDigit(num, index) {
   var item = String(Math.abs(num)).split("").reverse();
+  if (isNaN(Number(item[index]))) return 0;
   return Number(item[index]);
 }
 
