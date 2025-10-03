@@ -3,7 +3,7 @@
  * Outer Loop -> We initially assign the minimum Index to the current index.
  * Inner Loop -> We compare with arr[j] and arr[minIndex] to see if we found a minimum. If we do, we store the index.
  *
- * Again Outer Loop -> We check to see if the minIndex is changed, if so, we swap.
+ * Again Outer Loop -> We check to see if the minIndex is changed, if so, we swap..
  * @param {*} arr
  * @returns
  */
