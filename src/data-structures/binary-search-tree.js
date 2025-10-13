@@ -13,8 +13,8 @@ class BinarySearchTree {
 
   /**
    * Inserts a new value in the bst.
-   * @param {*} value 
-   * @returns 
+   * @param {*} value
+   * @returns
    */
   insert(value) {
     var newNode = new Node(value);
@@ -47,8 +47,8 @@ class BinarySearchTree {
 
   /**
    * Finds the node within the BST.
-   * @param {} value 
-   * @returns 
+   * @param {} value
+   * @returns
    */
   find(value) {
     // If there is no root, return undefined.
@@ -78,8 +78,8 @@ class BinarySearchTree {
 
   /**
    * Removes the node from the BST and adjust the children nodes (if needed).
-   * @param {*} value 
-   * @returns 
+   * @param {*} value
+   * @returns
    */
   remove(value) {
     if (!this.root) return undefined;
@@ -149,7 +149,7 @@ class BinarySearchTree {
 
   /**
    * Finds the second largest number in the BST.
-   * @returns 
+   * @returns
    */
   findSecondLargest() {
     if (!this.root) return undefined;
@@ -167,7 +167,7 @@ class BinarySearchTree {
 
   /**
    * Checks if the tree is balanced or not, by calculating the depth of the tree from both sides of the root(right and left).
-   * @returns 
+   * @returns
    */
   isBalanced() {
     if (!this.root) return false;
@@ -186,8 +186,49 @@ class BinarySearchTree {
       current = current.left;
     }
 
-    console.log(Math.abs(rightLength - leftLength) <= 1);
     return Math.abs(rightLength - leftLength) <= 1;
+  }
+
+  /**
+   * traverse horizontally on the nodes.
+   *
+   * Example
+   *           15
+   *      10       20
+   *    8   12   16   25
+   *
+   * Result: [15, 10, 20, 8, 12, 16, 25]
+   *
+   * 1st iteration -> 15
+   * 2nd iteration -> 10, 20
+   * 3rd iteration -> 8, 12, 16, 25
+   * @returns the traversed node.
+   */
+  breadthFirstSearch() {
+    // A FIFO queue to track the horizontal traversed items.
+    var queue = [];
+    var visited = [];
+    var node = this.root;
+
+    queue.push(node);
+
+    // As llong as the queue is not empty
+    while (queue.length > 0) {
+      // Remove the first item from the queue 
+      const poppedNode = queue.shift();
+      //  We visited the popped node. So store it.
+      visited.push(poppedNode.value);
+
+      // But also check, if the popped node has children nodes, if so, add them to the queue for processing.
+      if (poppedNode.left) queue.push(poppedNode.left);
+      if (poppedNode.right) queue.push(poppedNode.right);
+    }
+
+    return visited;
+  }
+
+  depthFirstSearch(){
+    
   }
 }
 
@@ -229,7 +270,7 @@ binarySearchTree.insert(20);
 binarySearchTree.insert(10);
 binarySearchTree.insert(12);
 binarySearchTree.isBalanced(); // true
- 
+
 var binarySearchTree2 = new BinarySearchTree();
 binarySearchTree2.insert(5);
 binarySearchTree2.isBalanced(); // true
@@ -237,3 +278,4 @@ binarySearchTree2.insert(6);
 binarySearchTree2.isBalanced(); // true
 binarySearchTree2.insert(7);
 binarySearchTree2.isBalanced(); // false
+binarySearchTree.breadthFirstSearch();
