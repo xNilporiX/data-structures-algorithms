@@ -214,7 +214,7 @@ class BinarySearchTree {
 
     // As llong as the queue is not empty
     while (queue.length > 0) {
-      // Remove the first item from the queue 
+      // Remove the first item from the queue
       const poppedNode = queue.shift();
       //  We visited the popped node. So store it.
       visited.push(poppedNode.value);
@@ -227,8 +227,110 @@ class BinarySearchTree {
     return visited;
   }
 
-  depthFirstSearch(){
-    
+  /**
+   * Depth First Search - PreOrder
+   *
+   * Root node -> left side first, then right
+   *
+   * Example:
+   *         10
+   *      6      15
+   *   3     8      20
+   *
+   * Result:  [10, 6, 3, 8, 15, 20]
+   */
+  depthFirstSearchPreOrder() {
+    // Starting from root
+    var current = this.root;
+    // Array to track the node traversal.
+    var visited = [];
+
+    traverse(current);
+
+    function traverse(node) {
+      visited.push(node.value);
+      //  If there is a left pointer to another node, recursively call it again.
+      if (node.left) traverse(node.left);
+
+      //  If there is a right pointer to another node, recursively call it again.
+      if (node.right) traverse(node.right);
+    }
+
+    return visited;
+  }
+
+  /**
+   * Depth First Search - PostOrder
+   *
+   *  Order:
+   *  left side bottom to top(not root),
+   *  right side bottom to top(not root),
+   *  Root
+   *
+   * Example:
+   *         10
+   *      6      15
+   *   3     8      20
+   *
+   * Result:  [3, 8, 6, 20, 15, 10]
+   */
+  depthFirstSearchPostOrder() {
+    // Starting from root
+    var current = this.root;
+    // Array to track the node traversal.
+    var visited = [];
+
+    traverse(current);
+
+    function traverse(node) {
+      //  If there is a left pointer to another node, recursively call it again.
+      if (node.left) traverse(node.left);
+
+      //  If there is a right pointer to another node, recursively call it again.
+      if (node.right) traverse(node.right);
+
+      visited.push(node.value);
+    }
+
+    return visited;
+  }
+
+
+  /**
+   * Depth First Search - InOrder
+   *
+   *  Order:
+   *  Visit left side ,
+   *  Node
+   *  Visit right side,
+   *
+   * Example:
+   *         10
+   *      6      15
+   *   3     8      20
+   *
+   * Result:  [3, 6, 8, 10, 15, 20]
+   */
+  depthFirstSearchInOrder() {
+    // Starting from root
+    var current = this.root;
+    // Array to track the node traversal.
+    var visited = [];
+
+    traverse(current);
+
+    function traverse(node) {
+      //  If there is a left pointer to another node, recursively call it again.
+      if (node.left) traverse(node.left);
+      
+      visited.push(node.value);
+
+      //  If there is a right pointer to another node, recursively call it again.
+      if (node.right) traverse(node.right);
+
+    }
+
+    return visited;
   }
 }
 
@@ -279,3 +381,6 @@ binarySearchTree2.isBalanced(); // true
 binarySearchTree2.insert(7);
 binarySearchTree2.isBalanced(); // false
 binarySearchTree.breadthFirstSearch();
+console.log(binarySearchTree.depthFirstSearchPostOrder());
+console.log(binarySearchTree.depthFirstSearchInOrder());
+
