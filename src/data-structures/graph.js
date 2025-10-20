@@ -1,3 +1,6 @@
+/**
+ * UnDirected Graph using adjacencyList.
+ */
 class Graph {
   constructor() {
     this.adjacencyList = {};
