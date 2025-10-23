@@ -123,6 +123,11 @@ class Graph {
     return results;
   }
 
+  /**
+   * Bread first Traversal of the graph.
+   * @param {*} startingVertex 
+   * @returns 
+   */
   breathFirstIterative(startingVertex) {
     //  Create a queue and initialise it with starting vertex.
     let queue = [startingVertex];

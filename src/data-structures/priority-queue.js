@@ -27,7 +27,7 @@ class PriorityQueue {
     //  Get the parent node index.
     let parentIndex = Math.floor((index - 1) / 2);
 
-    // as long as the value pushed in is greater than the parent, we bubble up.
+    // as long as the value pushed in is less than the parent, we bubble up.
     while (this.values[index]?.priority <= this.values[parentIndex]?.priority) {
       let parent = this.values[parentIndex];
       this.values[index] = parent;
@@ -94,3 +94,5 @@ pq.enqueue("common cold", 5)
 console.log(pq.values);
 pq.dequeue();
 console.log(pq.values);
+
+export default PriorityQueue;
